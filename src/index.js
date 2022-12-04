@@ -29,17 +29,17 @@ function checkingInputLength(value) {
     return;
   } else if (value.length === 1) {
     const markup = value
-      .map(value => {
-        return `<ul class="country-list"><li class="country-name"><img src="${flags.svg}" alt="flag" width='20' height ='15' >${name.official}</li></ul>
+      .map(({ name, capital, population, flags, languages }) => {
+        return `<div class="country-info-name"> <ul class="country-list"><li class="country-name"><img src="${flags.svg}" alt="flag" width='20' height ='15' >${name.official}</li></ul>
     <p>Сapital: ${capital}</p>
     <p>Population: ${population}</p>
-    <p>Languages: ${lang}</p>`;
+    <p>Languages: ${lang}</p></div>`;
       })
       .join('');
     refs.list.innerHTML = markup;
   } else {
     const listName = value
-      .map(value => {
+      .map(({ name, flags }) => {
         return `
     <li><img src="${flags.svg}" alt="flag" width='20' height ='15' >${value.official}</li>
     `;
