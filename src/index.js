@@ -36,12 +36,13 @@ function checkingInputLength(value) {
     <p>Languages: ${lang}</p></div>`;
       })
       .join('');
-    refs.list.innerHTML = markup;
+    console.log(markup);
+    refs.list.insertAdjacentHTML('beforeend', markup);
   } else {
     const listName = value
       .map(({ name, flags }) => {
         return `
-    <li><img src="${flags.svg}" alt="flag" width='20' height ='15' >${value.official}</li>
+    <li><img src="${flags.svg}" alt="flag" width='20' height ='15' >${name.official}</li>
     `;
       })
       .join('');
