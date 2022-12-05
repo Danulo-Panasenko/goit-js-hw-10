@@ -23,14 +23,20 @@ function onInpute(e) {
 
 function checkingInputLength(value) {
   if (value.length >= 11) {
+    clearInput();
     Notiflix.Notify.success(
       'Too many matches found. Please enter a more specific name.'
     );
     return;
   } else if (value.length === 1) {
+    clearInput();
     const markup = value
       .map(({ name, capital, population, flags, languages }) => {
-        return `<div class="country-info-name"> <ul class="country-list"><li class="country-name"><img src="${flags.svg}" alt="flag" width='20' height ='15' >${name.official}</li></ul>
+        let lang = '';
+        for (const key of languages) {
+          const lang = languages[key];
+        }
+        return `<div class="country-info-name"> <ul class=" country-list"><li class=" country-name"><img src="${flags.svg}" alt="flag" width='20' height ='15' >${name.official}</li></ul>
     <p>Сapital: ${capital}</p>
     <p>Population: ${population}</p>
     <p>Languages: ${lang}</p></div>`;
@@ -39,6 +45,7 @@ function checkingInputLength(value) {
     console.log(markup);
     refs.list.insertAdjacentHTML('beforeend', markup);
   } else {
+    clearInput();
     const listName = value
       .map(({ name, flags }) => {
         return `
