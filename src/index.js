@@ -32,18 +32,21 @@ function checkingInputLength(value) {
     clearInput();
     const markup = value
       .map(({ name, capital, population, flags, languages }) => {
-        let lang = '';
-        for (const key of languages) {
-          const lang = languages[key];
-        }
-        return `<div class="country-info-name"> <ul class=" country-list"><li class=" country-name"><img src="${flags.svg}" alt="flag" width='20' height ='15' >${name.official}</li></ul>
+        //let lang = '';
+        // for (const key of languages) {
+        //   const lang = languages[key];
+        // }
+        return `<div class="country-info-name"> <ul class=" country-list"><li class=" country-name"><img src="${
+          flags.svg
+        }" alt="flag" width='20' height ='15' >${name.official}</li></ul>
     <p>Сapital: ${capital}</p>
     <p>Population: ${population}</p>
-    <p>Languages: ${lang}</p></div>`;
+    <p>Languages: ${Object.values(languages)}</p></div>`;
       })
       .join('');
     console.log(markup);
-    refs.list.insertAdjacentHTML('beforeend', markup);
+    refs.info.insertAdjacentHTML('beforeend', markup);
+    return;
   } else {
     clearInput();
     const listName = value
